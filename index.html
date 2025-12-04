@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKA Alliance Casino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a1628 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* Animated Background */
+        .bg-casino {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 255, 200, 0.05) 0%, transparent 70%);
+        }
+
+        /* Sparkle particles */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+            box-shadow: 0 0 10px gold, 0 0 20px gold;
+        }
+
+        .sparkle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { left: 20%; top: 60%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { left: 35%; top: 30%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { left: 50%; top: 70%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { left: 65%; top: 25%; animation-delay: 2s; }
+        .sparkle:nth-child(6) { left: 80%; top: 55%; animation-delay: 2.5s; }
+        .sparkle:nth-child(7) { left: 90%; top: 35%; animation-delay: 0.3s; }
+        .sparkle:nth-child(8) { left: 15%; top: 80%; animation-delay: 1.8s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700, #ff8c00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #00ffd5;
+            margin-top: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Main Casino Area */
+        .casino-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Roulette Section */
+        .roulette-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .roulette-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        /* Roulette Wheel */
+        .roulette-wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: conic-gradient(
+                #e74c3c 0deg 10deg,
+                #2c3e50 10deg 20deg,
+                #e74c3c 20deg 30deg,
+                #2c3e50 30deg 40deg,
+                #e74c3c 40deg 50deg,
+                #2c3e50 50deg 60deg,
+                #e74c3c 60deg 70deg,
+                #2c3e50 70deg 80deg,
+                #e74c3c 80deg 90deg,
+                #2c3e50 90deg 100deg,
+                #27ae60 100deg 110deg,
+                #2c3e50 110deg 120deg,
+                #e74c3c 120deg 130deg,
+                #2c3e50 130deg 140deg,
+                #e74c3c 140deg 150deg,
+                #2c3e50 150deg 160deg,
+                #e74c3c 160deg 170deg,
+                #2c3e50 170deg 180deg,
+                #e74c3c 180deg 190deg,
+                #2c3e50 190deg 200deg,
+                #e74c3c 200deg 210deg,
+                #2c3e50 210deg 220deg,
+                #e74c3c 220deg 230deg,
+                #2c3e50 230deg 240deg,
+                #e74c3c 240deg 250deg,
+                #2c3e50 250deg 260deg,
+                #e74c3c 260deg 270deg,
+                #27ae60 270deg 280deg,
+                #e74c3c 280deg 290deg,
+                #2c3e50 290deg 300deg,
+                #e74c3c 300deg 310deg,
+                #2c3e50 310deg 320deg,
+                #e74c3c 320deg 330deg,
+                #2c3e50 330deg 340deg,
+                #e74c3c 340deg 350deg,
+                #2c3e50 350deg 360deg
+            );
+            box-shadow: 
+                0 0 0 15px #1a1a2e,
+                0 0 0 20px #ffd700,
+                0 0 0 25px #1a1a2e,
+                0 0 50px rgba(255, 215, 0, 0.3),
+                inset 0 0 30px rgba(0,0,0,0.5);
+            animation: spin 8s linear infinite;
+            cursor: pointer;
+            transition: animation-duration 0.5s;
+        }
+
+        .roulette-wheel:hover {
+            animation-duration: 2s;
+        }
+
+        .roulette-wheel.spinning {
+            animation: spinFast 0.5s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinFast {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Center of wheel */
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        /* Ball pointer */
+        .ball-pointer {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid #ffd700;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+            z-index: 10;
+        }
+
+        /* Jackpot Display */
+        .jackpot-display {
+            background: linear-gradient(135deg, #1a1a2e, #2d1f3d);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px 40px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .jackpot-label {
+            font-size: 0.9rem;
+            color: #00ffd5;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .jackpot-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: countUp 0.1s infinite;
+        }
+
+        /* Slot Machine Display */
+        .slot-display {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .slot-reel {
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(180deg, #0a0a0f, #1a1a2e, #0a0a0f);
+            border: 3px solid #ffd700;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 
+                inset 0 10px 20px rgba(0,0,0,0.5),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .slot-reel span {
+            animation: slotSpin 0.1s steps(1) infinite;
+        }
+
+        .slot-reel:nth-child(2) span { animation-delay: 0.05s; }
+        .slot-reel:nth-child(3) span { animation-delay: 0.1s; }
+
+        @keyframes slotSpin {
+            0% { content: "7️⃣"; }
+            25% { content: "🍒"; }
+            50% { content: "💎"; }
+            75% { content: "🎰"; }
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-casino {
+            position: relative;
+            padding: 18px 45px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a1a2e;
+            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #00ffd5, #00b894);
+            color: #1a1a2e;
+            box-shadow: 0 5px 30px rgba(0, 255, 213, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 255, 213, 0.5);
+        }
+
+        .btn-casino::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-casino:hover::before {
+            left: 100%;
+        }
+
+        /* Live Winners Ticker */
+        .winners-section {
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(45, 31, 61, 0.9));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .winners-title {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #00ffd5;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .winners-title span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #e74c3c;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .winners-ticker {
+            display: flex;
+            animation: ticker 20s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .winner-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 25px;
+            margin-right: 15px;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .winner-name {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .winner-game {
+            color: #00ffd5;
+            font-size: 0.85rem;
+        }
+
+        .winner-amount {
+            color: #ffd700;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Game Cards */
+        .games-section {
+            margin-top: 40px;
+        }
+
+        .games-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #1a1a2e, #2d1f3d);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffd700;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .game-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .game-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, rgba(0, 255, 213, 0.2), rgba(0, 184, 148, 0.2));
+            border: 1px solid #00ffd5;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #00ffd5;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .footer-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #00ffd5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Payment Icons */
+        .payment-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #fff;
+        }
+
+        .payment-icon.bkash { background: linear-gradient(135deg, #e2136e, #ff6b9d); }
+        .payment-icon.nagad { background: linear-gradient(135deg, #ff6b35, #ff9a5c); }
+        .payment-icon.rocket { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .games-grid { grid-template-columns: repeat(2, 1fr); }
+            .roulette-container { width: 260px; height: 260px; }
+            .roulette-wheel { width: 240px; height: 240px; }
+            .wheel-center { width: 80px; height: 80px; font-size: 1.2rem; }
+            .jackpot-amount { font-size: 1.8rem; }
+            .btn-casino { padding: 15px 30px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            .games-grid { grid-template-columns: 1fr; }
+            .action-buttons { flex-direction: column; }
+            .btn-casino { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-casino"></div>
+    
+    <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">TAKA ALLIANCE</div>
+            <div class="tagline">🎰 Bangladesh's #1 Online Casino 🎰</div>
+        </div>
+
+        <!-- Main Casino Area -->
+        <div class="casino-main">
+            <!-- Roulette Wheel -->
+            <div class="roulette-section">
+                <div class="roulette-container">
+                    <div class="ball-pointer"></div>
+                    <div class="roulette-wheel" id="wheel" onclick="spinWheel()"></div>
+                    <a href="https://takalliance.com" class="wheel-center" id="wheelCenter">
+                        SPIN
+                    </a>
+                </div>
+                
+                <!-- Jackpot Display -->
+                <div class="jackpot-display">
+                    <div class="jackpot-label">🏆 MEGA JACKPOT 🏆</div>
+                    <div class="jackpot-amount" id="jackpot">৳12,58,432</div>
+                </div>
+            </div>
+
+            <!-- Slot Display -->
+            <div class="slot-display">
+                <div class="slot-reel"><span id="slot1">7️⃣</span></div>
+                <div class="slot-reel"><span id="slot2">7️⃣</span></div>
+                <div class="slot-reel"><span id="slot3">7️⃣</span></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="https://takalliance.com" class="btn-casino btn-primary">
+                    🎰 PLAY NOW - এখনই খেলুন
+                </a>
+                <a href="https://takalliance.com/bonus/" class="btn-casino btn-secondary">
+                    🎁 CLAIM BONUS
+                </a>
+            </div>
+        </div>
+
+        <!-- Live Winners -->
+        <div class="winners-section">
+            <div class="winners-title">
+                <span></span> LIVE WINNERS - লাইভ বিজয়ীরা
+            </div>
+            <div class="winners-ticker">
+                <div class="winner-item">
+                    <span class="winner-name">Rahim_BD</span>
+                    <span class="winner-game">Fortune Tiger</span>
+                    <span class="winner-amount">৳45,000</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Karim_CTG</span>
+                    <span class="winner-game">Sweet Bonanza</span>
+                    <span class="winner-amount">৳28,500</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Sakib_DH</span>
+                    <span class="winner-game">Gates of Olympus</span>
+                    <span class="winner-amount">৳1,25,000</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Nadia_SYL</span>
+                    <span class="winner-game">Lucky Neko</span>
+                    <span class="winner-amount">৳18,200</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Farhan_KHL</span>
+                    <span class="winner-game">Super Ace</span>
+                    <span class="winner-amount">৳67,800</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Ayesha_RJ</span>
+                    <span class="winner-game">Money Coming</span>
+                    <span class="winner-amount">৳92,300</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="winner-item">
+                    <span class="winner-name">Rahim_BD</span>
+                    <span class="winner-game">Fortune Tiger</span>
+                    <span class="winner-amount">৳45,000</span>
+                </div>
+                <div class="winner-item">
+                    <span class="winner-name">Karim_CTG</span>
+                    <span class="winner-game">Sweet Bonanza</span>
+                    <span class="winner-amount">৳28,500</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Games Section -->
+        <div class="games-section">
+            <div class="games-title">🎮 POPULAR GAMES 🎮</div>
+            <div class="games-grid">
+                <a href="https://takalliance.com/bk33/" class="game-card">
+                    <div class="game-icon">👑</div>
+                    <div class="game-name">BK33 VIP</div>
+                    <div class="game-tag">VIP CASINO</div>
+                </a>
+                <a href="https://takalliance.com/ea77/" class="game-card">
+                    <div class="game-icon">🎮</div>
+                    <div class="game-name">EA77 GAMING</div>
+                    <div class="game-tag">HOT 🔥</div>
+                </a>
+                <a href="https://takalliance.com/gk222/" class="game-card">
+                    <div class="game-icon">🎰</div>
+                    <div class="game-name">GK222 SLOTS</div>
+                    <div class="game-tag">96%+ RTP</div>
+                </a>
+                <a href="https://takalliance.com/aq999/" class="game-card">
+                    <div class="game-icon">🃏</div>
+                    <div class="game-name">AQ999 LIVE</div>
+                    <div class="game-tag">LIVE 🔴</div>
+                </a>
+                <a href="https://takalliance.com/eg333/" class="game-card">
+                    <div class="game-icon">⭐</div>
+                    <div class="game-name">EG333 GAMES</div>
+                    <div class="game-tag">ALL-IN-ONE</div>
+                </a>
+                <a href="https://takalliance.com/bonus/" class="game-card">
+                    <div class="game-icon">🎁</div>
+                    <div class="game-name">BONUSES</div>
+                    <div class="game-tag">৳50,000 FREE</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-section">
+            <div class="payment-icon bkash">bKash</div>
+            <div class="payment-icon nagad">Nagad</div>
+            <div class="payment-icon rocket">Rocket</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-brand">TAKA ALLIANCE</div>
+            <div class="footer-links">
+                <a href="https://takalliance.com">🏠 Home</a>
+                <a href="https://takalliance.com/bkash/">💳 bKash Deposit</a>
+                <a href="https://takalliance.com/agent/">👥 Become Agent</a>
+                <a href="https://takalliance.com/bonus/">🎁 Bonuses</a>
+            </div>
+            <div class="footer-text">
+                © 2025 TAKA Alliance - Bangladesh's #1 Online Casino | 18+ Only | Play Responsibly<br>
+                বাংলাদেশের #১ অনলাইন ক্যাসিনো | ১৮+ | দায়িত্বশীলভাবে খেলুন
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Jackpot Counter Animation
+        function updateJackpot() {
+            const jackpotEl = document.getElementById('jackpot');
+            let amount = 1258432;
+            setInterval(() => {
+                amount += Math.floor(Math.random() * 100) + 10;
+                jackpotEl.textContent = '৳' + amount.toLocaleString('en-IN');
+            }, 100);
+        }
+
+        // Slot Machine Animation
+        const symbols = ['7️⃣', '🍒', '💎', '🎰', '👑', '💰', '🔔', '⭐'];
+        function animateSlots() {
+            setInterval(() => {
+                document.getElementById('slot1').textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                document.getElementById('slot2').textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                document.getElementById('slot3').textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 150);
+        }
+
+        // Spin Wheel Function
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            wheel.classList.add('spinning');
+            
+            // Redirect after spin animation
+            setTimeout(() => {
+                window.open('https://takalliance.com', '_blank');
+            }, 2000);
+            
+            setTimeout(() => {
+                wheel.classList.remove('spinning');
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateJackpot();
+            animateSlots();
+        });
+    </script>
+</body>
+</html>
